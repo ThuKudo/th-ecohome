@@ -1,0 +1,25 @@
+build
+dist
+__pycache__
+.vscode
+*.pyc
+*.spec
+*.db
+*.xlsx
+*.ipynb
+*.bat
+app.py
+audit_utils.py
+export_utils.py
+webapp.py
+Working Hours Desktop.bat
+Working Hours Web.bat
+Working Hours Web Stop.bat
+Buoi2.py
+Buoi3.py
+Buoi5.py
+Pandas_buoi7.py
+Luyentap.py
+Thigk.py
+test.py
+kudo.py
