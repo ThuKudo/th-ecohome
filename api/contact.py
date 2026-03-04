@@ -1,27 +1,8 @@
 import json
 import os
-from datetime import datetime, timezone
 from http import HTTPStatus
 from http.server import BaseHTTPRequestHandler
-
-from google.oauth2.service_account import Credentials
-from googleapiclient.discovery import build
-from googleapiclient.errors import HttpError
-
-
-SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
-DEFAULT_SHEET_NAME = "Contacts"
-HEADERS = [
-    "Submitted At",
-    "Form Type",
-    "Full Name",
-    "Phone",
-    "Message",
-    "Language",
-    "Source",
-    "Page URL",
-    "User Agent",
-]
+from urllib import error, request
 
 
 def get_env(name: str) -> str:
@@ -31,66 +12,36 @@ def get_env(name: str) -> str:
     return value
 
 
-def build_sheets_service():
-    service_account_json = get_env("GOOGLE_SERVICE_ACCOUNT_JSON")
-    sheet_id = get_env("GOOGLE_SHEET_ID")
-    sheet_name = os.getenv("GOOGLE_SHEET_NAME", DEFAULT_SHEET_NAME).strip() or DEFAULT_SHEET_NAME
-
-    credentials_info = json.loads(service_account_json)
-    credentials = Credentials.from_service_account_info(credentials_info, scopes=SCOPES)
-    service = build("sheets", "v4", credentials=credentials, cache_discovery=False)
-    return service, sheet_id, sheet_name
-
-
-def ensure_sheet_exists(service, spreadsheet_id: str, sheet_name: str) -> None:
-    spreadsheet = service.spreadsheets().get(spreadsheetId=spreadsheet_id).execute()
-    sheet_titles = [sheet["properties"]["title"] for sheet in spreadsheet.get("sheets", [])]
-
-    if sheet_name not in sheet_titles:
-        service.spreadsheets().batchUpdate(
-            spreadsheetId=spreadsheet_id,
-            body={"requests": [{"addSheet": {"properties": {"title": sheet_name}}}]},
-        ).execute()
-
-    values = (
-        service.spreadsheets()
-        .values()
-        .get(spreadsheetId=spreadsheet_id, range=f"{sheet_name}!A1:I1")
-        .execute()
-        .get("values", [])
+def forward_contact(payload: dict, user_agent: str) -> None:
+    apps_script_url = get_env("GOOGLE_APPS_SCRIPT_URL")
+    upstream_payload = {
+        "form_type": payload.get("form_type", ""),
+        "name": payload.get("name", ""),
+        "phone": payload.get("phone", ""),
+        "message": payload.get("message", ""),
+        "language": payload.get("language", ""),
+        "source": payload.get("source", ""),
+        "page_url": payload.get("page_url", ""),
+        "user_agent": user_agent,
+    }
+    req = request.Request(
+        apps_script_url,
+        data=json.dumps(upstream_payload, ensure_ascii=False).encode("utf-8"),
+        headers={"Content-Type": "application/json; charset=utf-8"},
+        method="POST",
     )
-    if not values:
-        service.spreadsheets().values().update(
-            spreadsheetId=spreadsheet_id,
-            range=f"{sheet_name}!A1:I1",
-            valueInputOption="RAW",
-            body={"values": [HEADERS]},
-        ).execute()
-
-
-def append_contact(payload: dict, user_agent: str) -> None:
-    service, spreadsheet_id, sheet_name = build_sheets_service()
-    ensure_sheet_exists(service, spreadsheet_id, sheet_name)
-
-    row = [
-        datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC"),
-        payload.get("form_type", ""),
-        payload.get("name", ""),
-        payload.get("phone", ""),
-        payload.get("message", ""),
-        payload.get("language", ""),
-        payload.get("source", ""),
-        payload.get("page_url", ""),
-        user_agent,
-    ]
-
-    service.spreadsheets().values().append(
-        spreadsheetId=spreadsheet_id,
-        range=f"{sheet_name}!A:I",
-        valueInputOption="USER_ENTERED",
-        insertDataOption="INSERT_ROWS",
-        body={"values": [row]},
-    ).execute()
+    with request.urlopen(req, timeout=15) as response:
+        status_code = getattr(response, "status", 200)
+        body = response.read().decode("utf-8", errors="replace")
+        if status_code >= 400:
+            raise RuntimeError(f"Apps Script error: {status_code}")
+        if body:
+            try:
+                parsed = json.loads(body)
+            except json.JSONDecodeError:
+                parsed = {}
+            if parsed.get("ok") is False:
+                raise RuntimeError(parsed.get("error", "Apps Script rejected the request."))
 
 
 class handler(BaseHTTPRequestHandler):
@@ -115,12 +66,18 @@ class handler(BaseHTTPRequestHandler):
             return
 
         try:
-            append_contact(payload, self.headers.get("User-Agent", ""))
+            forward_contact(payload, self.headers.get("User-Agent", ""))
         except ValueError as exc:
             self._send_json({"error": str(exc)}, HTTPStatus.INTERNAL_SERVER_ERROR)
             return
-        except HttpError as exc:
-            self._send_json({"error": f"Google Sheets API error: {exc.status_code}"}, HTTPStatus.BAD_GATEWAY)
+        except error.HTTPError as exc:
+            self._send_json({"error": f"Apps Script error: {exc.code}"}, HTTPStatus.BAD_GATEWAY)
+            return
+        except error.URLError:
+            self._send_json({"error": "Could not reach Apps Script."}, HTTPStatus.BAD_GATEWAY)
+            return
+        except RuntimeError as exc:
+            self._send_json({"error": str(exc)}, HTTPStatus.BAD_GATEWAY)
             return
         except Exception:
             self._send_json({"error": "Unexpected server error."}, HTTPStatus.INTERNAL_SERVER_ERROR)
