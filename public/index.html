@@ -9,16 +9,20 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
-    :root{--bg:#f4f5f7;--surface:#ffffff;--surface-soft:#f8fafc;--ink:#132033;--muted:#5f6b7a;--line:#d9dee7;--brand:#f28b20;--brand-dark:#cf6c08;--green:#17365d;--shadow:0 18px 38px rgba(19,32,51,.08);--container:min(1180px,calc(100vw - 32px))}
+    :root{--bg:#f4f5f7;--surface:#ffffff;--surface-soft:#f8fafc;--ink:#132033;--muted:#5f6b7a;--line:#d9dee7;--brand:#0d6ea8;--brand-dark:#084d78;--green:#17365d;--shadow:0 18px 38px rgba(19,32,51,.08);--container:min(1180px,calc(100vw - 32px))}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"Inter",sans-serif;color:var(--ink);background:linear-gradient(180deg,#f8fafc 0%,#f4f5f7 100%)}img{display:block;width:100%}a{text-decoration:none;color:inherit}button,input,textarea{font:inherit}
     .container{width:var(--container);margin:0 auto}.section{padding:44px 0;position:relative}.section:nth-of-type(even){background:#fff}.eyebrow{display:inline-flex;padding:9px 14px;border-radius:4px;background:var(--brand);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff}.section-title{margin:16px 0 12px;font-size:clamp(28px,4vw,44px);line-height:1.06;position:relative;padding-left:18px}.section-title::before{content:"";position:absolute;left:0;top:3px;bottom:3px;width:5px;background:var(--brand)}.section-text{margin:0;color:var(--muted);line-height:1.8;max-width:760px}
     h1,h2,h3,h4,.section-title,.logo strong,.service-card strong,.project-card strong,.quote-card strong,.article-card strong,.type-overlay strong,.process-step strong,.card strong{text-transform:uppercase;letter-spacing:.03em}
     .topbar{background:var(--green);color:rgba(255,255,255,.92);font-size:13px;border-bottom:3px solid var(--brand)}.topbar-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:10px 0}
-    .header-shell{position:sticky;top:0;z-index:30;padding:0}.header{width:100%;max-width:none;margin:0;display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;padding:16px max(16px,calc((100vw - 1180px)/2));background:#fff;border-bottom:1px solid var(--line);box-shadow:0 8px 18px rgba(19,32,51,.06)}
-    .logo{display:flex;gap:14px;align-items:center}.logo-mark{width:74px;height:74px;display:grid;place-items:center;flex:0 0 74px}.logo-mark svg{width:100%;height:100%;display:block}.logo strong{display:block;font-size:18px}.logo span{display:block;color:var(--muted);font-size:12px;margin-top:2px}
-    .nav{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}.nav a{padding:12px 14px;border-radius:0;color:var(--ink);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em}.nav a:hover{color:var(--brand-dark)}
-    .lang-switch{display:flex;gap:6px;padding:5px;border-radius:4px;background:#eef2f7;border:1px solid var(--line)}.lang-btn{border:0;background:transparent;padding:8px 12px;border-radius:2px;cursor:pointer;font-weight:700;color:var(--muted)}.lang-btn.active{background:#fff;color:var(--green);box-shadow:0 4px 10px rgba(19,32,51,.08)}
-    .header-actions{display:flex;gap:10px;flex-wrap:wrap}.btn,.btn-outline{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 18px;border-radius:4px;border:0;cursor:pointer;font-weight:700;transition:transform .2s ease,box-shadow .2s ease}.btn:hover,.btn-outline:hover{transform:translateY(-1px)}.btn{background:linear-gradient(180deg,var(--brand),var(--brand-dark));color:#fff;box-shadow:0 12px 22px rgba(242,139,32,.18)}.btn-outline{background:#fff;color:var(--green);border:1px solid var(--line)}
+    .header-shell{position:sticky;top:0;z-index:30;padding:0}.header{width:100%;max-width:none;margin:0;display:grid;grid-template-columns:minmax(340px,470px) minmax(0,1fr);grid-template-rows:auto auto;column-gap:28px;row-gap:8px;align-items:center;padding:12px max(16px,calc((100vw - 1180px)/2));background:#fff;border-bottom:1px solid var(--line);box-shadow:0 8px 18px rgba(19,32,51,.06)}
+    .logo{display:flex;gap:18px;align-items:center;grid-row:1 / span 2}.logo-mark{width:112px;height:112px;display:grid;place-items:center;flex:0 0 112px}.logo-mark svg{width:100%;height:100%;display:block}.logo-copy{display:grid;gap:5px}.logo strong{display:block;font-size:28px;line-height:1}.logo span{display:block;color:var(--muted);font-size:12px;line-height:1.45;margin-top:0;max-width:280px}
+    .nav{display:flex;justify-content:flex-start;gap:16px;flex-wrap:wrap;align-self:end}.nav a{padding:4px 0;border-radius:0;color:var(--ink);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.03em;white-space:nowrap}.nav a:hover{color:var(--brand-dark)}
+    .lang-switch{display:flex;gap:6px;padding:4px;border-radius:4px;background:#eef2f7;border:1px solid var(--line)}.lang-btn{border:0;background:transparent;padding:8px 11px;border-radius:2px;cursor:pointer;font-weight:700;font-size:12px;color:var(--muted)}.lang-btn.active{background:#fff;color:var(--green);box-shadow:0 4px 10px rgba(19,32,51,.08)}
+    .header-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-start;align-items:center}.btn,.btn-outline{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 16px;border-radius:4px;border:0;cursor:pointer;font-weight:700;font-size:12px;transition:transform .2s ease,box-shadow .2s ease}.btn:hover,.btn-outline:hover{transform:translateY(-1px)}.btn{background:linear-gradient(180deg,var(--brand),var(--brand-dark));color:#fff;box-shadow:0 12px 22px rgba(242,139,32,.18)}.btn-outline{background:#fff;color:var(--green);border:1px solid var(--line)}
+    .header-actions .btn{margin-left:4px}
+    .icon-inline{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}
+    .icon-inline svg{width:18px;height:18px;display:block}
+    .zalo-mark{color:#0068ff}
     .share-feedback{font-size:13px;color:var(--green);min-height:18px;margin-top:10px}
     .share-cluster{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
     .share-mini{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 14px;border-radius:4px;border:1px solid var(--line);background:#fff;color:var(--green);font-weight:700;cursor:pointer;text-decoration:none;transition:transform .2s ease,box-shadow .2s ease}
@@ -27,8 +31,8 @@
     .share-mini.zalo{color:#0068ff}
     .share-mini.facebook{color:#1877f2}
     .share-mini.messenger{color:#0084ff}
-    .hero-grid{display:grid;grid-template-columns:minmax(0,1.32fr) 360px;gap:22px;align-items:stretch}.hero-stage{position:relative;min-height:610px;overflow:hidden;border-radius:0;box-shadow:var(--shadow);border:1px solid var(--line)}.slide{position:absolute;inset:0;opacity:0;transition:opacity .55s ease}.slide.active{opacity:1}.slide::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(16,29,47,.86) 0%,rgba(16,29,47,.42) 54%,rgba(16,29,47,.16) 100%)}.slide img{height:100%;object-fit:cover}.slide-content{position:absolute;left:38px;bottom:38px;width:min(580px,calc(100% - 76px));color:#fff;z-index:1}.slide-content p{color:rgba(255,255,255,.88);line-height:1.75;max-width:520px}.dots{position:absolute;top:0;right:0;left:auto;display:flex;gap:0;z-index:2}.dot{width:54px;height:54px;border-radius:0;border:0;background:rgba(255,255,255,.18);cursor:pointer}.dot.active{width:54px;background:var(--brand)}
-    .panel,.card,.service-card,.project-card,.quote-card,.article-card,.contact-card{background:var(--surface);border:1px solid var(--line);border-radius:0;box-shadow:var(--shadow)}.panel,.contact-card,.card,.quote-card,.article-card{padding:26px}.hero-side{display:grid;gap:18px}.meta-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.meta-box{padding:18px;border-radius:0;background:var(--surface-soft);border:1px solid var(--line)}.meta-box strong{display:block;font-size:24px;margin-top:10px}.meta-box span{font-size:13px;color:var(--muted);text-transform:uppercase;font-weight:700;letter-spacing:.06em}
+    .hero-grid{display:grid;grid-template-columns:minmax(0,1.34fr) 324px;gap:20px;align-items:stretch}.hero-stage{position:relative;min-height:610px;overflow:hidden;border-radius:0;box-shadow:var(--shadow);border:1px solid var(--line)}.slide{position:absolute;inset:0;opacity:0;transition:opacity .55s ease}.slide.active{opacity:1}.slide::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(16,29,47,.86) 0%,rgba(16,29,47,.42) 54%,rgba(16,29,47,.16) 100%)}.slide img{height:100%;object-fit:cover}.slide-content{position:absolute;left:38px;bottom:38px;width:min(560px,calc(100% - 76px));color:#fff;z-index:1}.slide-content p{color:rgba(255,255,255,.88);line-height:1.65;max-width:500px;font-size:15px}.dots{position:absolute;top:0;right:0;left:auto;display:flex;gap:0;z-index:2}.dot{width:48px;height:48px;border-radius:0;border:0;background:rgba(255,255,255,.18);cursor:pointer}.dot.active{width:48px;background:var(--brand)}
+    .panel,.card,.service-card,.project-card,.quote-card,.article-card,.contact-card{background:var(--surface);border:1px solid var(--line);border-radius:0;box-shadow:var(--shadow)}.panel,.contact-card,.card,.quote-card,.article-card{padding:22px}.hero-side{display:grid;gap:18px}.meta-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.meta-box{padding:15px;border-radius:0;background:var(--surface-soft);border:1px solid var(--line)}.meta-box strong{display:block;font-size:18px;margin-top:8px;line-height:1.2}.meta-box span{font-size:11px;color:var(--muted);text-transform:uppercase;font-weight:700;letter-spacing:.05em}
     .highlights{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}.card strong,.service-card strong,.project-card strong,.quote-card strong,.article-card strong{display:block}
     .services-grid,.project-grid,.quote-grid,.article-grid{display:grid;gap:20px}.services-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.service-card,.project-card{overflow:hidden;position:relative}.service-card::before,.project-card::before,.quote-card::before,.article-card::before,.card::before,.contact-card::before{content:"";position:absolute;inset:0 auto auto 0;width:100%;height:4px;background:var(--brand)}.service-card img,.project-card img{height:240px;object-fit:cover}.service-body,.project-body{padding:20px}
     .types-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}.type-card{position:relative;overflow:hidden;min-height:300px;border-radius:0;box-shadow:var(--shadow);border:1px solid var(--line)}.type-card img{height:100%;object-fit:cover;transition:transform .45s ease}.type-card:hover img{transform:scale(1.05)}.type-overlay{position:absolute;inset:auto 0 0 0;padding:22px;color:#fff;background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(16,29,47,.9) 100%)}.type-overlay strong{font-size:22px}.type-overlay span{display:block;color:rgba(255,255,255,.82);margin-top:6px;line-height:1.5}
@@ -38,8 +42,8 @@
     .contact-wrap{display:grid;grid-template-columns:1fr 420px;gap:22px}.contact-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}.contact-list{display:grid;gap:10px;color:var(--muted);line-height:1.8}.contact-form{display:grid;gap:12px}.contact-form input,.contact-form textarea{width:100%;padding:13px 14px;border-radius:0;border:1px solid var(--line);background:#fff;outline:0}.contact-form textarea{min-height:110px;resize:vertical}.status{min-height:20px;font-size:14px;color:var(--green)}.status.error{color:#b14b2f}
     .footer{margin-top:18px;padding:38px 0 42px;background:#13243b;color:rgba(255,255,255,.82);border-top:4px solid var(--brand)}.footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:24px}.footer h4{margin:0 0 12px;color:#fff}.footer p,.footer li{line-height:1.75;color:rgba(255,255,255,.72)}.footer ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
     .floating{position:fixed;right:18px;bottom:18px;z-index:20;display:grid;gap:10px}.floating a{padding:12px 16px;border-radius:4px;background:var(--brand);color:#fff;box-shadow:0 12px 26px rgba(0,0,0,.16)}
-    @media (max-width:1120px){.header,.hero-grid,.contact-wrap,.showcase,.footer-grid{grid-template-columns:1fr}.highlights,.services-grid,.types-grid,.process,.quote-grid,.article-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-    @media (max-width:720px){.topbar{display:none}.header-shell{padding-top:8px}.header{padding:14px;border-radius:20px}.nav{justify-content:flex-start}.section{padding:26px 0}.highlights,.services-grid,.types-grid,.process,.quote-grid,.article-grid,.meta-grid,.gallery{grid-template-columns:1fr}.hero-stage{min-height:520px}.slide-content{left:20px;bottom:20px;width:calc(100% - 40px)}.header-actions{display:none}}
+    @media (max-width:1120px){.header,.hero-grid,.contact-wrap,.showcase,.footer-grid{grid-template-columns:1fr}.header{grid-template-rows:auto auto auto}.logo{grid-row:auto}.nav,.header-actions{justify-content:flex-start}.highlights,.services-grid,.types-grid,.process,.quote-grid,.article-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media (max-width:720px){.topbar{display:none}.header-shell{padding-top:8px}.header{padding:14px 16px;row-gap:14px}.logo{align-items:flex-start}.logo-mark{width:86px;height:86px;flex-basis:86px}.logo strong{font-size:22px}.logo span{font-size:11px;max-width:220px}.nav{gap:14px}.nav a{font-size:12px}.section{padding:26px 0}.highlights,.services-grid,.types-grid,.process,.quote-grid,.article-grid,.meta-grid,.gallery{grid-template-columns:1fr}.hero-stage{min-height:520px}.slide-content{left:20px;bottom:20px;width:calc(100% - 40px)}.header-actions{display:flex}}
   </style>
 </head>
 <body>
@@ -54,44 +58,43 @@
     <header class="header">
       <a class="logo" href="#top">
         <div class="logo-mark" aria-hidden="true">
-          <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" role="img">
-            <rect x="18" y="26" width="58" height="92" fill="#84e58b"/>
-            <rect x="34" y="42" width="58" height="76" fill="#0d7d1b"/>
-            <rect x="62" y="52" width="20" height="66" fill="#ffffff"/>
-            <rect x="88" y="46" width="56" height="16" fill="#2dbf43"/>
-            <rect x="88" y="64" width="16" height="54" fill="#0d7d1b"/>
-            <rect x="108" y="64" width="16" height="54" fill="#1e962d"/>
-            <rect x="128" y="64" width="16" height="54" fill="#49d35b"/>
-            <polygon points="28,34 92,10 92,26 28,50" fill="#0b6517"/>
-            <polygon points="72,48 148,76 148,118 72,90" fill="#158f24"/>
-            <rect x="38" y="80" width="8" height="8" fill="#ffffff"/>
-            <rect x="50" y="80" width="8" height="8" fill="#ffffff"/>
-            <rect x="38" y="92" width="8" height="8" fill="#ffffff"/>
-            <rect x="50" y="92" width="8" height="8" fill="#ffffff"/>
-            <rect x="38" y="104" width="8" height="8" fill="#ffffff"/>
-            <rect x="50" y="104" width="8" height="8" fill="#ffffff"/>
-            <rect x="20" y="118" width="126" height="6" fill="#0d7d1b"/>
+          <svg viewBox="0 0 220 160" xmlns="http://www.w3.org/2000/svg" role="img">
+            <path d="M31 112h20V62l34-31 36 31-10 12-26-22v60h17V84l22-22 27 24h35v26h10l-23-17V70l-29-26-28 28h-11l4-9c8-18 25-31 45-34-10-8-23-13-37-13-22 0-42 12-53 30L96 15 49 58h8v54H31z" fill="#0f4f90"/>
+            <path d="M173 22c23 0 43 14 52 35 6 13 6 28 2 42h-15c5-12 5-26 0-38-7-17-24-28-42-28-13 0-25 5-34 14h-16c12-16 31-25 53-25z" fill="#67bf4b"/>
+            <path d="M171 31c9 0 18 2 25 7-18-2-34 2-47 13h-17c10-13 24-20 39-20z" fill="#67bf4b"/>
+            <path d="M122 110h58V85l-29-25-29 25z" fill="none" stroke="#0f4f90" stroke-width="8" stroke-linejoin="round"/>
+            <rect x="146" y="89" width="18" height="18" fill="#0f4f90"/>
+            <path d="M155 89v18M146 98h18" stroke="#ffffff" stroke-width="3"/>
+            <path d="M26 113h174" stroke="#0f4f90" stroke-width="6" stroke-linecap="round"/>
           </svg>
         </div>
-        <div>
+        <div class="logo-copy">
           <strong id="companyName"></strong>
           <span id="companyTagline"></span>
         </div>
       </a>
       <nav class="nav">
-        <a id="navServices" href="#services">Dich vu</a>
-        <a id="navProjects" href="#projects">Du an</a>
-        <a id="navProcess" href="#process">Quy trinh</a>
-        <a id="navArticles" href="#articles">Cam nang</a>
-        <a id="navContact" href="#contact">Lien he</a>
+        <a id="navServices" href="#services">Dịch vụ</a>
+        <a id="navProjects" href="#projects">Dự án</a>
+        <a id="navProcess" href="#process">Quy trình</a>
+        <a id="navArticles" href="#articles">Cẩm nang</a>
+        <a id="navContact" href="#contact">Liên hệ</a>
       </nav>
       <div class="header-actions">
         <div class="lang-switch">
           <button class="lang-btn active" id="langVi" type="button">VI</button>
           <button class="lang-btn" id="langEn" type="button">EN</button>
         </div>
-        <a class="btn-outline" id="zaloLinkHeader" href="#" target="_blank" rel="noreferrer">Zalo</a>
-        <a class="btn" id="phoneLinkHeader" href="#">Goi ngay</a>
+        <a class="btn-outline" id="zaloLinkHeader" href="#" target="_blank" rel="noreferrer">
+          <span class="icon-inline zalo-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M4 4h16v16H4z" opacity=".08"></path>
+              <path d="M7 7h10v2l-6.3 6H17v2H7v-2l6.3-6H7z"></path>
+            </svg>
+          </span>
+          <span>Zalo</span>
+        </a>
+        <a class="btn" id="phoneLinkHeader" href="#">G?i ngay</a>
       </div>
     </header>
   </div>
@@ -105,24 +108,24 @@
         </div>
         <aside class="hero-side">
           <div class="panel">
-            <span class="eyebrow" id="heroPanelEyebrow">Don vi thiet ke va thi cong</span>
-            <h2 id="heroPanelTitle" style="margin:14px 0 12px;font-size:28px;">Giai phap tron goi cho nha pho, noi that va cai tao cong trinh</h2>
+            <span class="eyebrow" id="heroPanelEyebrow">??n v? thi?t k? v? thi c?ng</span>
+            <h2 id="heroPanelTitle" style="margin:14px 0 12px;font-size:28px;">Gi?i ph?p tr?n g?i cho nh? ph?, n?i th?t v? c?i t?o c?ng tr?nh</h2>
             <p class="section-text" id="websiteNote"></p>
             <div class="meta-grid">
-              <div class="meta-box"><span id="metaLabel1">Linh vuc</span><strong>4+</strong></div>
-              <div class="meta-box"><span id="metaLabel2">Hang muc</span><strong id="metaValue2">Tron goi</strong></div>
-              <div class="meta-box"><span id="metaLabel3">Phong cach</span><strong id="metaValue3">Hien dai</strong></div>
-              <div class="meta-box"><span id="metaLabel4">Lien he</span><strong id="companyPhoneBox"></strong></div>
+              <div class="meta-box"><span id="metaLabel1">L?nh v?c</span><strong>4+</strong></div>
+              <div class="meta-box"><span id="metaLabel2">H?ng m?c</span><strong id="metaValue2">Tr?n g?i</strong></div>
+              <div class="meta-box"><span id="metaLabel3">Phong c?ch</span><strong id="metaValue3">Hi?n ??i</strong></div>
+              <div class="meta-box"><span id="metaLabel4">Liên hệ</span><strong id="companyPhoneBox"></strong></div>
             </div>
           </div>
           <div class="contact-card">
-            <span class="eyebrow" id="consultEyebrow">Yeu cau tu van</span>
-            <h3 id="consultTitle" style="margin:14px 0 12px;">De lai thong tin, TH-Ecohome se lien he lai</h3>
+            <span class="eyebrow" id="consultEyebrow">Y?u c?u t? v?n</span>
+            <h3 id="consultTitle" style="margin:14px 0 12px;">?? l?i th?ng tin, TH-Ecohome s? li?n h? l?i</h3>
             <form class="contact-form" id="consultForm">
-              <input id="consultName" type="text" placeholder="Ho va ten" required />
-              <input id="consultPhone" type="tel" placeholder="So dien thoai" required />
-              <textarea id="consultMessage" placeholder="Ban dang quan tam thiet ke, thi cong hay cai tao hang muc nao?"></textarea>
-              <button class="btn" id="consultSubmit" type="submit">Gui yeu cau</button>
+              <input id="consultName" type="text" placeholder="H? v? t?n" required />
+              <input id="consultPhone" type="tel" placeholder="S? ?i?n tho?i" required />
+              <textarea id="consultMessage" placeholder="B?n ?ang quan t?m thi?t k?, thi c?ng hay c?i t?o h?ng m?c n?o?"></textarea>
+              <button class="btn" id="consultSubmit" type="submit">G?i y?u c?u</button>
               <div class="status" id="consultStatus"></div>
             </form>
           </div>
@@ -136,7 +139,7 @@
 
     <section class="section" id="services">
       <div class="container">
-        <span class="eyebrow" id="servicesEyebrow">Dich vu chinh</span>
+        <span class="eyebrow" id="servicesEyebrow">D?ch v? ch?nh</span>
         <h2 class="section-title" id="servicesTitle">TH-Ecohome tap trung vao cac hang muc sat voi nhu cau thuc te</h2>
         <p class="section-text" id="servicesText">Huong toi cach lam viec ro rang, hien dai, de hieu va de phoi hop cho chu nha, gia dinh tre va cong trinh quy mo vua.</p>
         <div class="services-grid" id="servicesGrid" style="margin-top:20px;"></div>
@@ -145,7 +148,7 @@
 
     <section class="section">
       <div class="container">
-        <span class="eyebrow" id="typesEyebrow">Loai cong trinh</span>
+        <span class="eyebrow" id="typesEyebrow">Lo?i c?ng tr?nh</span>
         <h2 class="section-title" id="typesTitle">Khong gian TH-Ecohome co the dong hanh</h2>
         <p class="section-text" id="typesText">Tu nha pho dan dung den noi that can ho, bep, phong tam va cac hang muc cai tao can doi moi nhanh gon.</p>
         <div class="types-grid" id="typeGrid" style="margin-top:20px;"></div>
@@ -155,7 +158,7 @@
     <section class="section" id="projects">
       <div class="container showcase">
         <div class="card">
-          <span class="eyebrow" id="projectsEyebrow">Du an tieu bieu</span>
+          <span class="eyebrow" id="projectsEyebrow">D? ?n ti?u bi?u</span>
           <h2 id="projectsTitle" style="margin:14px 0 10px;font-size:34px;">Huong den khong gian song gon, sang va de su dung lau dai</h2>
           <p class="section-text" id="projectsText">Website nay duoc doi noi dung theo dung nganh nghe cua TH-Ecohome: nha pho dan dung, noi that, cai tao va thi cong hoan thien.</p>
           <div class="gallery">
@@ -171,7 +174,7 @@
 
     <section class="section" id="process">
       <div class="container">
-        <span class="eyebrow" id="processEyebrow">Quy trinh</span>
+        <span class="eyebrow" id="processEyebrow">Quy trình</span>
         <h2 class="section-title" id="processTitle">Lam viec ro rang tu dau de de kiem soat chat luong va tien do</h2>
         <div class="process" id="processGrid" style="margin-top:20px;"></div>
       </div>
@@ -179,7 +182,7 @@
 
     <section class="section">
       <div class="container">
-        <span class="eyebrow" id="quotesEyebrow">Danh gia</span>
+        <span class="eyebrow" id="quotesEyebrow">??nh gi?</span>
         <h2 class="section-title" id="quotesTitle">Cam nhan tu khach hang</h2>
         <div class="quote-grid" id="quoteGrid" style="margin-top:20px;"></div>
       </div>
@@ -187,8 +190,8 @@
 
     <section class="section" id="articles">
       <div class="container">
-        <span class="eyebrow" id="articlesEyebrow">Cam nang</span>
-        <h2 class="section-title" id="articlesTitle">Noi dung goi y de xay dung niem tin va chia se kinh nghiem</h2>
+        <span class="eyebrow" id="articlesEyebrow">Cẩm nang</span>
+        <h2 class="section-title" id="articlesTitle">Nội dung gợi ý để xây dựng niềm tin và chia sẻ kinh nghiệm</h2>
         <div class="article-grid" id="articleGrid" style="margin-top:20px;"></div>
       </div>
     </section>
@@ -196,15 +199,15 @@
     <section class="section" id="contact">
       <div class="container contact-wrap">
         <div class="card">
-          <span class="eyebrow" id="contactEyebrow">Lien he day du</span>
-          <h2 id="contactTitle" style="margin:14px 0 12px;font-size:34px;">Cong ty TNHH Thuong Mai va Dich vu TH-Ecohome</h2>
+          <span class="eyebrow" id="contactEyebrow">Li?n h? ??y ??</span>
+          <h2 id="contactTitle" style="margin:14px 0 12px;font-size:34px;">C?ng ty TNHH Th??ng M?i v? D?ch v? TH-Ecohome</h2>
           <p class="section-text" id="contactText">Neu ban can tu van thiet ke, thi cong nha pho, noi that hay cai tao cong trinh, co the lien he truc tiep qua dien thoai hoac Zalo.</p>
           <div class="contact-list" style="margin-top:18px;">
             <div><strong id="contactAddressLabel">Tru so:</strong> <span id="contactAddress"></span></div>
             <div><strong id="contactPhoneLabel">SDT lien he:</strong> <span id="contactPhone"></span></div>
             <div><strong>Zalo:</strong> <span id="contactZalo"></span></div>
             <div><strong id="contactHoursLabel">Gio tu van:</strong> <span id="contactHours"></span></div>
-            <div><strong id="contactFieldLabel">Linh vuc:</strong> <span id="contactFieldText">Thiet ke, thi cong cong trinh nha pho dan dung, noi that, cai tao cong trinh.</span></div>
+            <div><strong id="contactFieldLabel">L?nh v?c:</strong> <span id="contactFieldText">Thi?t k?, thi c?ng c?ng tr?nh nh? ph? d?n d?ng, n?i th?t, c?i t?o c?ng tr?nh.</span></div>
           </div>
           <div class="contact-actions">
             <a class="btn" id="phoneLinkContact" href="#">Goi 0367954406</a>
@@ -212,13 +215,13 @@
           </div>
         </div>
         <div class="contact-card">
-          <span class="eyebrow" id="contactFormEyebrow">Hen lich nhanh</span>
-          <h3 id="contactFormTitle" style="margin:14px 0 12px;">Gui thong tin de duoc lien he lai</h3>
+          <span class="eyebrow" id="contactFormEyebrow">H?n l?ch nhanh</span>
+          <h3 id="contactFormTitle" style="margin:14px 0 12px;">G?i th?ng tin ?? ???c li?n h? l?i</h3>
           <form class="contact-form" id="contactForm">
-            <input id="contactName" type="text" placeholder="Ho va ten" required />
-            <input id="contactPhoneInput" type="tel" placeholder="So dien thoai" required />
-            <textarea id="contactMessage" placeholder="Mo ta ngan nhu cau cong trinh cua ban"></textarea>
-            <button class="btn" id="contactSubmit" type="submit">Gui thong tin</button>
+            <input id="contactName" type="text" placeholder="H? v? t?n" required />
+            <input id="contactPhoneInput" type="tel" placeholder="S? ?i?n tho?i" required />
+            <textarea id="contactMessage" placeholder="M? t? ng?n nhu c?u c?ng tr?nh c?a b?n"></textarea>
+            <button class="btn" id="contactSubmit" type="submit">G?i th?ng tin</button>
             <div class="status" id="contactStatus"></div>
           </form>
         </div>
@@ -231,31 +234,22 @@
       <div>
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
           <div class="logo-mark" style="width:62px;height:62px;flex-basis:62px;">
-            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" role="img">
-              <rect x="18" y="26" width="58" height="92" fill="#84e58b"/>
-              <rect x="34" y="42" width="58" height="76" fill="#0d7d1b"/>
-              <rect x="62" y="52" width="20" height="66" fill="#ffffff"/>
-              <rect x="88" y="46" width="56" height="16" fill="#2dbf43"/>
-              <rect x="88" y="64" width="16" height="54" fill="#0d7d1b"/>
-              <rect x="108" y="64" width="16" height="54" fill="#1e962d"/>
-              <rect x="128" y="64" width="16" height="54" fill="#49d35b"/>
-              <polygon points="28,34 92,10 92,26 28,50" fill="#0b6517"/>
-              <polygon points="72,48 148,76 148,118 72,90" fill="#158f24"/>
-              <rect x="38" y="80" width="8" height="8" fill="#ffffff"/>
-              <rect x="50" y="80" width="8" height="8" fill="#ffffff"/>
-              <rect x="38" y="92" width="8" height="8" fill="#ffffff"/>
-              <rect x="50" y="92" width="8" height="8" fill="#ffffff"/>
-              <rect x="38" y="104" width="8" height="8" fill="#ffffff"/>
-              <rect x="50" y="104" width="8" height="8" fill="#ffffff"/>
-              <rect x="20" y="118" width="126" height="6" fill="#0d7d1b"/>
-            </svg>
+              <svg viewBox="0 0 220 160" xmlns="http://www.w3.org/2000/svg" role="img">
+                <path d="M31 112h20V62l34-31 36 31-10 12-26-22v60h17V84l22-22 27 24h35v26h10l-23-17V70l-29-26-28 28h-11l4-9c8-18 25-31 45-34-10-8-23-13-37-13-22 0-42 12-53 30L96 15 49 58h8v54H31z" fill="#0f4f90"/>
+                <path d="M173 22c23 0 43 14 52 35 6 13 6 28 2 42h-15c5-12 5-26 0-38-7-17-24-28-42-28-13 0-25 5-34 14h-16c12-16 31-25 53-25z" fill="#67bf4b"/>
+                <path d="M171 31c9 0 18 2 25 7-18-2-34 2-47 13h-17c10-13 24-20 39-20z" fill="#67bf4b"/>
+                <path d="M122 110h58V85l-29-25-29 25z" fill="none" stroke="#0f4f90" stroke-width="8" stroke-linejoin="round"/>
+                <rect x="146" y="89" width="18" height="18" fill="#0f4f90"/>
+                <path d="M155 89v18M146 98h18" stroke="#ffffff" stroke-width="3"/>
+                <path d="M26 113h174" stroke="#0f4f90" stroke-width="6" stroke-linecap="round"/>
+              </svg>
           </div>
           <h4 id="footerName" style="margin:0;"></h4>
         </div>
         <p id="footerTagline"></p>
       </div>
       <div>
-        <h4 id="footerContactTitle">Thong tin lien he</h4>
+        <h4 id="footerContactTitle">Th?ng tin li?n h?</h4>
         <ul>
           <li id="footerAddress"></li>
           <li id="footerPhone"></li>
@@ -264,19 +258,19 @@
         </ul>
       </div>
       <div>
-        <h4 id="footerFieldTitle">Linh vuc chuyen mon</h4>
+        <h4 id="footerFieldTitle">L?nh v?c chuy?n m?n</h4>
         <ul>
-          <li id="footerField1">Thiet ke nha pho dan dung</li>
-          <li id="footerField2">Thi cong cong trinh va hoan thien</li>
-          <li id="footerField3">Thiet ke va thi cong noi that</li>
-          <li id="footerField4">Cai tao cong trinh va khong gian song</li>
+          <li id="footerField1">Thi?t k? nh? ph? d?n d?ng</li>
+          <li id="footerField2">Thi c?ng c?ng tr?nh v? ho?n thi?n</li>
+          <li id="footerField3">Thi?t k? v? thi c?ng n?i th?t</li>
+          <li id="footerField4">C?i t?o c?ng tr?nh v? kh?ng gian s?ng</li>
         </ul>
       </div>
     </div>
   </footer>
 
   <div class="floating">
-    <a id="floatingTop" href="#top">Len dau trang</a>
+    <a id="floatingTop" href="#top">Lên đầu trang</a>
     <a id="zaloFloating" href="#" target="_blank" rel="noreferrer">Zalo</a>
   </div>
 
@@ -488,7 +482,7 @@
       document.getElementById("navContact").textContent=t.navContact;
       const shareButton=document.getElementById("shareButton");
       const copyLinkButton=document.getElementById("copyLinkButton");
-      if(shareButton){shareButton.setAttribute("aria-label",currentLang==="vi"?"Chia sẻ link website":"Share website link");}
+        if(shareButton){shareButton.setAttribute("aria-label","Share website link");}
       if(copyLinkButton){copyLinkButton.setAttribute("aria-label",currentLang==="vi"?"Copy link website":"Copy website link");}
       document.getElementById("phoneLinkHeader").textContent=t.callNow;
       document.getElementById("heroPanelEyebrow").textContent=t.heroPanelEyebrow;
@@ -565,7 +559,7 @@
       document.getElementById("footerName").textContent=company.name;
       document.getElementById("footerTagline").textContent=company.tagline;
       document.getElementById("footerAddress").textContent=company.address;
-      document.getElementById("footerPhone").textContent=`${currentLang==="vi"?"SDT":"Phone"}: ${company.phone}`;
+      document.getElementById("footerPhone").textContent=`${currentLang==="vi"?"S?T":"Phone"}: ${company.phone}`;
       document.getElementById("footerZalo").textContent=`Zalo: ${company.zalo}`;
       document.getElementById("footerHours").textContent=company.hours;
       document.querySelector(".topbar-inner div:first-child").innerHTML=`<span id="companyHours">${company.hours}</span>${bullet}<span id="companyAddress">${company.address}</span>`;
@@ -805,3 +799,5 @@
   </script>
 </body>
 </html>
+
+
