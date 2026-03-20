@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TH-Ecohome Admin | Qu?n l? t?i li?u</title>
+  <title>TH-Ecohome Admin | Quản lý tài liệu</title>
   <meta name="robots" content="noindex,nofollow" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -40,40 +40,40 @@
           </div>
           <div>
             <h1>TH-Ecohome Admin</h1>
-            <p>Qu?n l? t?i li?u n?i b? v? link chia s? cho kh?ch h?ng.</p>
+            <p>Quản lý tài liệu nội bộ và link chia sẻ cho khách hàng.</p>
           </div>
         </div>
-        <a class="ghost-link" href="/">Quay v? website</a>
+        <a class="ghost-link" href="/">Quay về website</a>
       </div>
 
       <section class="panel hero">
         <div class="hero-copy">
           <span class="eyebrow">Document Manager</span>
-          <h2>Upload t?i li?u tr?c ti?p l?n web</h2>
-          <p>Trang n?y d?nh ri?ng cho b?n. Sau khi ??ng nh?p, m?nh c? th? t?i PDF, h? s? n?ng l?c, b?ng gi? ho?c t?i li?u k? thu?t l?n Supabase Storage v? l?y link ngay ?? g?i kh?ch.</p>
+          <h2>Upload tài liệu trực tiếp lên web</h2>
+          <p>Trang này dành riêng cho bạn. Sau khi đăng nhập, mình có thể tải PDF, hồ sơ năng lực, bảng giá hoặc tài liệu kỹ thuật lên Supabase Storage và lấy link ngay để gửi khách.</p>
         </div>
         <div class="stack">
           <div class="card">
-            <strong>M?nh s? d?ng ?? l?m g??</strong>
-            <p class="helper">Upload file, l?y link public, copy nhanh v? m? ki?m tra tr?c ti?p tr?n website.</p>
+            <strong>Mình sẽ dùng để làm gì?</strong>
+            <p class="helper">Upload file, lấy link public, copy nhanh và mở kiểm tra trực tiếp trên website.</p>
           </div>
           <div class="card">
-            <strong>L?u ?</strong>
-            <p class="helper">Bucket Supabase n?n ?? <b>public</b> n?u b?n mu?n link t?i li?u m? tr?c ti?p cho kh?ch.</p>
+            <strong>Lưu ý</strong>
+            <p class="helper">Bucket Supabase nên để <b>public</b> nếu bạn muốn link tài liệu mở trực tiếp cho khách.</p>
           </div>
         </div>
       </section>
 
       <section id="loginSection" class="panel login-card hidden">
-        <h3>??ng nh?p qu?n tr?</h3>
-        <p class="helper">Nh?p m?t kh?u ri?ng c?a b?n ?? m? khu upload t?i li?u.</p>
+        <h3>Đăng nhập quản trị</h3>
+        <p class="helper">Nhập mật khẩu riêng của bạn để mở khu upload tài liệu.</p>
         <form id="loginForm">
           <div class="field">
-            <label for="passwordInput">M?t kh?u admin</label>
-            <input id="passwordInput" type="password" autocomplete="current-password" placeholder="Nh?p m?t kh?u" required />
+            <label for="passwordInput">Mật khẩu admin</label>
+            <input id="passwordInput" type="password" autocomplete="current-password" placeholder="Nhập mật khẩu" required />
           </div>
           <div class="actions">
-            <button class="btn" id="loginButton" type="submit">??ng nh?p</button>
+            <button class="btn" id="loginButton" type="submit">Đăng nhập</button>
           </div>
           <div class="status" id="loginStatus"></div>
         </form>
@@ -82,31 +82,31 @@
       <section id="dashboardSection" class="hidden">
         <div class="admin-grid">
           <div class="panel upload-card">
-            <h3>Upload t?i li?u</h3>
-            <p class="helper">Ch?n file t? m?y t?nh r?i b?m upload. File m?i s? hi?n ngay trong danh s?ch b?n ph?i.</p>
+            <h3>Upload tài liệu</h3>
+            <p class="helper">Chọn file từ máy tính rồi bấm upload. File mới sẽ hiện ngay trong danh sách bên phải.</p>
             <form id="uploadForm">
               <div class="field">
-                <label for="fileInput">T?i li?u</label>
+                <label for="fileInput">Tài liệu</label>
                 <input id="fileInput" type="file" required />
               </div>
               <div class="actions">
                 <button class="btn" id="uploadButton" type="submit">Upload file</button>
-                <button class="btn-outline" id="logoutButton" type="button">??ng xu?t</button>
+                <button class="btn-outline" id="logoutButton" type="button">Đăng xuất</button>
               </div>
               <div class="status" id="uploadStatus"></div>
             </form>
             <div class="note">
-              G?i ?: ph? h?p nh?t v?i PDF, DOCX, XLSX, ?nh c?ng tr?nh, h? s? n?ng l?c v? b?ng b?o gi?. Gi?i h?n hi?n t?i: <b>25MB/file</b>.
+              Gợi ý: phù hợp nhất với PDF, DOCX, XLSX, ảnh công trình, hồ sơ năng lực và bảng báo giá. Giới hạn hiện tại: <b>25MB/file</b>.
             </div>
           </div>
 
           <div class="panel list-card">
             <div class="list-head">
               <div>
-                <h3>Danh s?ch t?i li?u</h3>
-                <p class="helper">Copy link ho?c m? tr?c ti?p ?? ki?m tra.</p>
+                <h3>Danh sách tài liệu</h3>
+                <p class="helper">Copy link hoặc mở trực tiếp để kiểm tra.</p>
               </div>
-              <button class="btn-outline" id="refreshButton" type="button">L?m m?i</button>
+              <button class="btn-outline" id="refreshButton" type="button">Làm mới</button>
             </div>
             <div class="status" id="listStatus"></div>
             <div class="docs" id="documentList"></div>
@@ -171,7 +171,7 @@
 
     function renderDocuments(documents) {
       if (!documents.length) {
-        documentList.innerHTML = '<div class="empty">Ch?a c? t?i li?u n?o. Upload file ??u ti?n ? c?t b?n tr?i.</div>';
+        documentList.innerHTML = '<div class="empty">Chưa có tài liệu nào. Upload file đầu tiên ở cột bên trái.</div>';
         return;
       }
       documentList.innerHTML = documents.map((doc) => {
@@ -180,11 +180,11 @@
           <article class="doc">
             <div>
               <h4>${doc.name}</h4>
-              <p>${updated ? `C?p nh?t: ${updated}` : "Ch?a c? th?i gian"} ? ${formatBytes(doc.size)}</p>
+              <p>${updated ? `Cập nhật: ${updated}` : "Chưa có thời gian"} • ${formatBytes(doc.size)}</p>
               <p>${doc.path}</p>
             </div>
             <div class="doc-actions">
-              <a class="mini primary" href="${doc.url}" target="_blank" rel="noreferrer">M? file</a>
+              <a class="mini primary" href="${doc.url}" target="_blank" rel="noreferrer">Mở file</a>
               <button class="mini" type="button" data-copy="${doc.url}">Copy link</button>
             </div>
           </article>
@@ -194,10 +194,10 @@
         button.addEventListener("click", async () => {
           try {
             await navigator.clipboard.writeText(button.dataset.copy);
-            listStatus.textContent = "?? copy link t?i li?u.";
+            listStatus.textContent = "Đã copy link tài liệu.";
             listStatus.className = "status success";
           } catch (_error) {
-            listStatus.textContent = "Kh?ng copy ???c link tr?n tr?nh duy?t n?y.";
+            listStatus.textContent = "Không copy được link trên trình duyệt này.";
             listStatus.className = "status error";
           }
         });
@@ -205,18 +205,18 @@
     }
 
     async function loadDocuments() {
-      listStatus.textContent = "?ang t?i danh s?ch t?i li?u...";
+      listStatus.textContent = "Đang tải danh sách tài liệu...";
       listStatus.className = "status";
       const payload = await api("/api/list_documents");
       renderDocuments(payload.documents || []);
-      listStatus.textContent = payload.documents && payload.documents.length ? "Danh s?ch ?? ???c c?p nh?t." : "";
+      listStatus.textContent = payload.documents && payload.documents.length ? "Danh sách đã được cập nhật." : "";
       listStatus.className = payload.documents && payload.documents.length ? "status success" : "status";
     }
 
     loginForm.addEventListener("submit", async (event) => {
       event.preventDefault();
       loginButton.disabled = true;
-      loginStatus.textContent = "?ang ??ng nh?p...";
+      loginStatus.textContent = "Đang đăng nhập...";
       loginStatus.className = "status";
       try {
         await api("/api/admin_login", {
@@ -229,7 +229,7 @@
         loginStatus.textContent = "";
         await loadDocuments();
       } catch (error) {
-        loginStatus.textContent = error.message || "??ng nh?p th?t b?i.";
+        loginStatus.textContent = error.message || "Đăng nhập thất bại.";
         loginStatus.className = "status error";
       } finally {
         loginButton.disabled = false;
@@ -240,12 +240,12 @@
       event.preventDefault();
       const file = fileInput.files && fileInput.files[0];
       if (!file) {
-        uploadStatus.textContent = "B?n ch?a ch?n file.";
+        uploadStatus.textContent = "Bạn chưa chọn file.";
         uploadStatus.className = "status error";
         return;
       }
       uploadButton.disabled = true;
-      uploadStatus.textContent = `?ang upload ${file.name}...`;
+      uploadStatus.textContent = `Đang upload ${file.name}...`;
       uploadStatus.className = "status";
       try {
         await api("/api/upload_document", {
@@ -257,30 +257,34 @@
           body: file,
         });
         fileInput.value = "";
-        uploadStatus.textContent = "Upload th?nh c?ng.";
+        uploadStatus.textContent = "Upload thành công.";
         uploadStatus.className = "status success";
         await loadDocuments();
       } catch (error) {
-        uploadStatus.textContent = error.message || "Upload th?t b?i.";
+        uploadStatus.textContent = error.message || "Upload thất bại.";
         uploadStatus.className = "status error";
       } finally {
         uploadButton.disabled = false;
       }
     });
 
-    refreshButton.addEventListener("click", () => {
-      loadDocuments().catch((error) => {
-        listStatus.textContent = error.message || "Kh?ng t?i ???c danh s?ch t?i li?u.";
+    refreshButton.addEventListener("click", async () => {
+      try {
+        await loadDocuments();
+      } catch (error) {
+        listStatus.textContent = error.message || "Không tải được danh sách tài liệu.";
         listStatus.className = "status error";
-      });
+      }
     });
 
     logoutButton.addEventListener("click", async () => {
-      await api("/api/admin_logout", { method: "POST" }).catch(() => null);
+      try {
+        await api("/api/admin_logout", { method: "POST" });
+      } catch (_error) {
+      }
       showLogin();
       documentList.innerHTML = "";
-      uploadStatus.textContent = "";
-      listStatus.textContent = "";
+      passwordInput.focus();
     });
 
     async function bootstrap() {
@@ -290,12 +294,12 @@
       } catch (error) {
         if (error.status === 401) {
           showLogin();
-        } else {
-          showDashboard();
-          documentList.innerHTML = '<div class="empty">Ch?a k?t n?i ???c storage. Ki?m tra l?i bi?n m?i tr??ng Supabase tr?n Vercel.</div>';
-          listStatus.textContent = error.message || "Kh?ng t?i ???c t?i li?u.";
-          listStatus.className = "status error";
+          passwordInput.focus();
+          return;
         }
+        showLogin();
+        loginStatus.textContent = error.message || "Không thể khởi tạo trang quản trị.";
+        loginStatus.className = "status error";
       }
     }
 
