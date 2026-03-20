@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TH-Ecohome Admin | Qu?n l? t?i li?u</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#eef3f9;--surface:#ffffff;--surface-2:#f6f9fc;--ink:#15253b;--muted:#627186;--line:#d9e2ee;--brand:#0d6ea8;--brand-dark:#084d78;--accent:#1c9dd9;--success:#177d55;--danger:#b24444;--shadow:0 22px 48px rgba(16,36,62,.12);--container:min(1120px,calc(100vw - 32px))}
+    *{box-sizing:border-box}html,body{margin:0;padding:0}body{font-family:"Manrope",sans-serif;background:radial-gradient(circle at top left,#f8fbff 0%,#eef3f9 42%,#e7eef7 100%);color:var(--ink)}
+    a{text-decoration:none;color:inherit}button,input{font:inherit}
+    .shell{min-height:100vh;padding:28px 0 48px}.container{width:var(--container);margin:0 auto}
+    .topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:18px}.brand{display:flex;align-items:center;gap:14px}.brand-mark{width:54px;height:54px;border-radius:18px;background:linear-gradient(180deg,var(--brand),var(--brand-dark));display:grid;place-items:center;box-shadow:0 18px 32px rgba(13,110,168,.22)}.brand-mark svg{width:30px;height:30px;fill:#fff}.brand h1{margin:0;font-size:24px;letter-spacing:.02em}.brand p{margin:4px 0 0;color:var(--muted);font-size:14px}
+    .ghost-link{color:var(--brand-dark);font-weight:700}
+    .panel{background:rgba(255,255,255,.92);border:1px solid rgba(217,226,238,.9);border-radius:28px;box-shadow:var(--shadow);backdrop-filter:blur(10px)}
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;padding:24px}.hero-copy{padding:18px 6px 18px 6px}.eyebrow{display:inline-flex;padding:8px 12px;border-radius:999px;background:#dff2fc;color:var(--brand-dark);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.hero h2{margin:16px 0 12px;font-size:clamp(32px,4vw,52px);line-height:1.02}.hero p{margin:0;color:var(--muted);line-height:1.8;max-width:56ch}.stack{display:grid;gap:14px}
+    .card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:20px}
+    .login-card{max-width:480px;margin:28px auto 0;padding:26px}.login-card h3,.upload-card h3,.list-card h3{margin:0 0 10px;font-size:24px}.helper{margin:0;color:var(--muted);line-height:1.7}
+    .field{display:grid;gap:8px;margin-top:16px}.field label{font-size:13px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}.field input[type="password"],.field input[type="file"]{width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:16px;background:var(--surface-2)}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}.btn,.btn-outline{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 18px;border-radius:16px;border:0;cursor:pointer;font-weight:800;transition:transform .18s ease,box-shadow .18s ease}.btn:hover,.btn-outline:hover{transform:translateY(-1px)}.btn{background:linear-gradient(180deg,var(--brand),var(--brand-dark));color:#fff;box-shadow:0 14px 28px rgba(13,110,168,.24)}.btn-outline{background:#fff;border:1px solid var(--line);color:var(--ink)}.btn[disabled]{opacity:.6;cursor:wait;transform:none}
+    .admin-grid{display:grid;grid-template-columns:380px minmax(0,1fr);gap:20px;margin-top:26px}.upload-card,.list-card{padding:22px}.note{margin-top:14px;padding:14px 16px;border-radius:18px;background:#f4f9ff;border:1px solid #d8e8f8;color:var(--muted);line-height:1.7;font-size:14px}
+    .status{min-height:20px;margin-top:12px;font-size:14px;font-weight:700}.status.error{color:var(--danger)}.status.success{color:var(--success)}
+    .list-head{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:14px}.muted{color:var(--muted)}
+    .docs{display:grid;gap:14px}.doc{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center;padding:16px 18px;border:1px solid var(--line);border-radius:18px;background:var(--surface-2)}.doc h4{margin:0 0 6px;font-size:16px}.doc p{margin:0;color:var(--muted);font-size:13px;line-height:1.6}.doc-actions{display:flex;gap:10px;flex-wrap:wrap}.mini{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:#fff;font-weight:800;font-size:13px;cursor:pointer}.mini.primary{background:#e5f4fb;color:var(--brand-dark);border-color:#c9e7f7}
+    .empty{padding:24px;border:1px dashed var(--line);border-radius:18px;text-align:center;color:var(--muted);background:#fbfdff}
+    .hidden{display:none!important}
+    @media (max-width: 980px){.hero,.admin-grid{grid-template-columns:1fr}.topbar{align-items:flex-start;flex-direction:column}}
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="container">
+      <div class="topbar">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 3 3 11h2v9h5v-6h4v6h5v-9h2z"/></svg>
+          </div>
+          <div>
+            <h1>TH-Ecohome Admin</h1>
+            <p>Qu?n l? t?i li?u n?i b? v? link chia s? cho kh?ch h?ng.</p>
+          </div>
+        </div>
+        <a class="ghost-link" href="/">Quay v? website</a>
+      </div>
+
+      <section class="panel hero">
+        <div class="hero-copy">
+          <span class="eyebrow">Document Manager</span>
+          <h2>Upload t?i li?u tr?c ti?p l?n web</h2>
+          <p>Trang n?y d?nh ri?ng cho b?n. Sau khi ??ng nh?p, m?nh c? th? t?i PDF, h? s? n?ng l?c, b?ng gi? ho?c t?i li?u k? thu?t l?n Supabase Storage v? l?y link ngay ?? g?i kh?ch.</p>
+        </div>
+        <div class="stack">
+          <div class="card">
+            <strong>M?nh s? d?ng ?? l?m g??</strong>
+            <p class="helper">Upload file, l?y link public, copy nhanh v? m? ki?m tra tr?c ti?p tr?n website.</p>
+          </div>
+          <div class="card">
+            <strong>L?u ?</strong>
+            <p class="helper">Bucket Supabase n?n ?? <b>public</b> n?u b?n mu?n link t?i li?u m? tr?c ti?p cho kh?ch.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="loginSection" class="panel login-card hidden">
+        <h3>??ng nh?p qu?n tr?</h3>
+        <p class="helper">Nh?p m?t kh?u ri?ng c?a b?n ?? m? khu upload t?i li?u.</p>
+        <form id="loginForm">
+          <div class="field">
+            <label for="passwordInput">M?t kh?u admin</label>
+            <input id="passwordInput" type="password" autocomplete="current-password" placeholder="Nh?p m?t kh?u" required />
+          </div>
+          <div class="actions">
+            <button class="btn" id="loginButton" type="submit">??ng nh?p</button>
+          </div>
+          <div class="status" id="loginStatus"></div>
+        </form>
+      </section>
+
+      <section id="dashboardSection" class="hidden">
+        <div class="admin-grid">
+          <div class="panel upload-card">
+            <h3>Upload t?i li?u</h3>
+            <p class="helper">Ch?n file t? m?y t?nh r?i b?m upload. File m?i s? hi?n ngay trong danh s?ch b?n ph?i.</p>
+            <form id="uploadForm">
+              <div class="field">
+                <label for="fileInput">T?i li?u</label>
+                <input id="fileInput" type="file" required />
+              </div>
+              <div class="actions">
+                <button class="btn" id="uploadButton" type="submit">Upload file</button>
+                <button class="btn-outline" id="logoutButton" type="button">??ng xu?t</button>
+              </div>
+              <div class="status" id="uploadStatus"></div>
+            </form>
+            <div class="note">
+              G?i ?: ph? h?p nh?t v?i PDF, DOCX, XLSX, ?nh c?ng tr?nh, h? s? n?ng l?c v? b?ng b?o gi?. Gi?i h?n hi?n t?i: <b>25MB/file</b>.
+            </div>
+          </div>
+
+          <div class="panel list-card">
+            <div class="list-head">
+              <div>
+                <h3>Danh s?ch t?i li?u</h3>
+                <p class="helper">Copy link ho?c m? tr?c ti?p ?? ki?m tra.</p>
+              </div>
+              <button class="btn-outline" id="refreshButton" type="button">L?m m?i</button>
+            </div>
+            <div class="status" id="listStatus"></div>
+            <div class="docs" id="documentList"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    const loginSection = document.getElementById("loginSection");
+    const dashboardSection = document.getElementById("dashboardSection");
+    const loginForm = document.getElementById("loginForm");
+    const passwordInput = document.getElementById("passwordInput");
+    const loginButton = document.getElementById("loginButton");
+    const loginStatus = document.getElementById("loginStatus");
+    const uploadForm = document.getElementById("uploadForm");
+    const fileInput = document.getElementById("fileInput");
+    const uploadButton = document.getElementById("uploadButton");
+    const uploadStatus = document.getElementById("uploadStatus");
+    const documentList = document.getElementById("documentList");
+    const listStatus = document.getElementById("listStatus");
+    const refreshButton = document.getElementById("refreshButton");
+    const logoutButton = document.getElementById("logoutButton");
+
+    async function api(path, options = {}) {
+      const response = await fetch(path, {
+        credentials: "same-origin",
+        ...options,
+      });
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        const error = new Error(payload.error || "Request failed.");
+        error.status = response.status;
+        throw error;
+      }
+      return payload;
+    }
+
+    function showLogin() {
+      loginSection.classList.remove("hidden");
+      dashboardSection.classList.add("hidden");
+    }
+
+    function showDashboard() {
+      loginSection.classList.add("hidden");
+      dashboardSection.classList.remove("hidden");
+    }
+
+    function formatBytes(bytes) {
+      const size = Number(bytes || 0);
+      if (!size) return "0 B";
+      const units = ["B", "KB", "MB", "GB"];
+      let value = size;
+      let unitIndex = 0;
+      while (value >= 1024 && unitIndex < units.length - 1) {
+        value /= 1024;
+        unitIndex += 1;
+      }
+      return `${value.toFixed(value >= 10 || unitIndex === 0 ? 0 : 1)} ${units[unitIndex]}`;
+    }
+
+    function renderDocuments(documents) {
+      if (!documents.length) {
+        documentList.innerHTML = '<div class="empty">Ch?a c? t?i li?u n?o. Upload file ??u ti?n ? c?t b?n tr?i.</div>';
+        return;
+      }
+      documentList.innerHTML = documents.map((doc) => {
+        const updated = doc.updated_at || doc.created_at || "";
+        return `
+          <article class="doc">
+            <div>
+              <h4>${doc.name}</h4>
+              <p>${updated ? `C?p nh?t: ${updated}` : "Ch?a c? th?i gian"} ? ${formatBytes(doc.size)}</p>
+              <p>${doc.path}</p>
+            </div>
+            <div class="doc-actions">
+              <a class="mini primary" href="${doc.url}" target="_blank" rel="noreferrer">M? file</a>
+              <button class="mini" type="button" data-copy="${doc.url}">Copy link</button>
+            </div>
+          </article>
+        `;
+      }).join("");
+      documentList.querySelectorAll("[data-copy]").forEach((button) => {
+        button.addEventListener("click", async () => {
+          try {
+            await navigator.clipboard.writeText(button.dataset.copy);
+            listStatus.textContent = "?? copy link t?i li?u.";
+            listStatus.className = "status success";
+          } catch (_error) {
+            listStatus.textContent = "Kh?ng copy ???c link tr?n tr?nh duy?t n?y.";
+            listStatus.className = "status error";
+          }
+        });
+      });
+    }
+
+    async function loadDocuments() {
+      listStatus.textContent = "?ang t?i danh s?ch t?i li?u...";
+      listStatus.className = "status";
+      const payload = await api("/api/list_documents");
+      renderDocuments(payload.documents || []);
+      listStatus.textContent = payload.documents && payload.documents.length ? "Danh s?ch ?? ???c c?p nh?t." : "";
+      listStatus.className = payload.documents && payload.documents.length ? "status success" : "status";
+    }
+
+    loginForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      loginButton.disabled = true;
+      loginStatus.textContent = "?ang ??ng nh?p...";
+      loginStatus.className = "status";
+      try {
+        await api("/api/admin_login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ password: passwordInput.value }),
+        });
+        passwordInput.value = "";
+        showDashboard();
+        loginStatus.textContent = "";
+        await loadDocuments();
+      } catch (error) {
+        loginStatus.textContent = error.message || "??ng nh?p th?t b?i.";
+        loginStatus.className = "status error";
+      } finally {
+        loginButton.disabled = false;
+      }
+    });
+
+    uploadForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const file = fileInput.files && fileInput.files[0];
+      if (!file) {
+        uploadStatus.textContent = "B?n ch?a ch?n file.";
+        uploadStatus.className = "status error";
+        return;
+      }
+      uploadButton.disabled = true;
+      uploadStatus.textContent = `?ang upload ${file.name}...`;
+      uploadStatus.className = "status";
+      try {
+        await api("/api/upload_document", {
+          method: "POST",
+          headers: {
+            "X-File-Name": encodeURIComponent(file.name),
+            "X-Content-Type": file.type || "application/octet-stream",
+          },
+          body: file,
+        });
+        fileInput.value = "";
+        uploadStatus.textContent = "Upload th?nh c?ng.";
+        uploadStatus.className = "status success";
+        await loadDocuments();
+      } catch (error) {
+        uploadStatus.textContent = error.message || "Upload th?t b?i.";
+        uploadStatus.className = "status error";
+      } finally {
+        uploadButton.disabled = false;
+      }
+    });
+
+    refreshButton.addEventListener("click", () => {
+      loadDocuments().catch((error) => {
+        listStatus.textContent = error.message || "Kh?ng t?i ???c danh s?ch t?i li?u.";
+        listStatus.className = "status error";
+      });
+    });
+
+    logoutButton.addEventListener("click", async () => {
+      await api("/api/admin_logout", { method: "POST" }).catch(() => null);
+      showLogin();
+      documentList.innerHTML = "";
+      uploadStatus.textContent = "";
+      listStatus.textContent = "";
+    });
+
+    async function bootstrap() {
+      try {
+        await loadDocuments();
+        showDashboard();
+      } catch (error) {
+        if (error.status === 401) {
+          showLogin();
+        } else {
+          showDashboard();
+          documentList.innerHTML = '<div class="empty">Ch?a k?t n?i ???c storage. Ki?m tra l?i bi?n m?i tr??ng Supabase tr?n Vercel.</div>';
+          listStatus.textContent = error.message || "Kh?ng t?i ???c t?i li?u.";
+          listStatus.className = "status error";
+        }
+      }
+    }
+
+    bootstrap();
+  </script>
+</body>
+</html>
